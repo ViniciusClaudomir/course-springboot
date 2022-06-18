@@ -14,25 +14,25 @@ import com.educandoweb.course.services.UserService;
 
 @RestController
 @RequestMapping(value = "/users")
-public class UserResource  {
-	
+public class UserResource {
+
 	@Autowired
 	private UserService userService;
-	
+
 	@GetMapping
 	public ResponseEntity<List<UserAccount>> findAll() {
-		
-		List<UserAccount> listWithAllUsers = userService.findAll();
-		
+
+ 		List<UserAccount> listWithAllUsers = userService.findAll();
+
 		return ResponseEntity.ok().body(listWithAllUsers);
 	}
-	
+
 	@GetMapping
 	@RequestMapping(value = "/{id}")
 	public ResponseEntity<UserAccount> findById(@PathVariable Long id) {
-		
+
 		UserAccount UserProvideDatabase = userService.findByid(id);
-		
+
 		return ResponseEntity.ok().body(UserProvideDatabase);
 	}
 }
