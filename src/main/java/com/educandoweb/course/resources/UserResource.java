@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.educandoweb.course.entities.UserAccount;
+import com.educandoweb.course.entities.User;
 import com.educandoweb.course.services.UserService;
 
 @RestController
@@ -20,18 +20,18 @@ public class UserResource {
 	private UserService userService;
 
 	@GetMapping
-	public ResponseEntity<List<UserAccount>> findAll() {
+	public ResponseEntity<List<User>> findAll() {
 
- 		List<UserAccount> listWithAllUsers = userService.findAll();
+ 		List<User> listWithAllUsers = userService.findAll();
 
 		return ResponseEntity.ok().body(listWithAllUsers);
 	}
 
 	@GetMapping
 	@RequestMapping(value = "/{id}")
-	public ResponseEntity<UserAccount> findById(@PathVariable Long id) {
+	public ResponseEntity<User> findById(@PathVariable Long id) {
 
-		UserAccount UserProvideDatabase = userService.findByid(id);
+		User UserProvideDatabase = userService.findById(id);
 
 		return ResponseEntity.ok().body(UserProvideDatabase);
 	}
